@@ -1,25 +1,119 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 26
+
+    compileSdkVersion versions.compileSdkVersion
+    buildToolsVersion versions.buildToolsVersion
+
     defaultConfig {
         applicationId "com.itheima.testnewproject"
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion versions.minSdkVersion
+        targetSdkVersion versions.targetSdkVersion
+        versionCode versions.versionCode
+        versionName versions.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
-        release {
+       /* release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }*/
+        debug {
+            applicationIdSuffix ".dev"
+//            signingConfig signingConfigs.release
+            manifestPlaceholders = [
+                    ALIBABA_APPKEY   : "23792007",
+                    ALIBABA_APPSECRET: "34bf6d13285313b0fcbd70cdc2f5d297",
+                    UMENG_APPKEY     : "58abdfcfcae7e75b4e000bf0",
+                    BUGLY_APPID      : "5327fda72c",
+                    APP_ICON         : "@drawable/ic_launcher_test"
+            ]
+        }
+        aTest {
+            initWith(debug)
+            applicationIdSuffix ".test"
+            manifestPlaceholders = [
+                    ALIBABA_APPKEY   : "23797966",
+                    ALIBABA_APPSECRET: "5b02adb44fd4534c22d2d576627103ae",
+                    UMENG_APPKEY     : "58abdfcfcae7e75b4e000bf0",
+                    BUGLY_APPID      : "5327fda72c",
+                    APP_ICON         : "@drawable/ic_launcher_test"
+            ]
+        }
+
+        pre_release {
+            debuggable true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+            manifestPlaceholders = [
+                    ALIBABA_APPKEY   : "23327073",
+                    ALIBABA_APPSECRET: "31eb5a2eed7eace525ae744e858a8340",
+                    UMENG_APPKEY     : "564927b2e0f55acd3f008503",
+                    BUGLY_APPID      : "8045507c66",
+                    APP_ICON         : "@drawable/ic_launcher"
+            ]
+        }
+
+        release {
+            debuggable false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+            manifestPlaceholders = [
+                    ALIBABA_APPKEY   : "23327073",
+                    ALIBABA_APPSECRET: "31eb5a2eed7eace525ae744e858a8340",
+                    UMENG_APPKEY     : "564927b2e0f55acd3f008503",
+                    BUGLY_APPID      : "8045507c66",
+                    APP_ICON         : "@drawable/ic_launcher"
+            ]
         }
     }
+    dexOptions {
+        javaMaxHeapSize "6g"
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:26.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+//    implementation 'com.android.support:appcompat-v7:26.1.0'
+    //================工具相关
+    compile 'com.jakewharton.timber:timber:4.3.1'   //日志
+    compile 'com.orhanobut:logger:1.15' //日志
+    compile 'com.android.support:multidex:1.0.1'   //防止超方法数
+    compile 'com.blankj:utilcode:1.3.5'   //工具类
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.3' //recyclerview适配器
+    compile 'com.yqritc:recyclerview-flexibledivider:1.4.0' //recyclerview分割线
+    //================网络请求相关
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:retrofit-mock:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+    compile 'com.google.code.gson:gson:2.7'
+    //================RX相关
+    compile 'io.reactivex:rxandroid:1.2.0'
+    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-recyclerview-v7:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-support-v4:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-appcompat-v7:0.4.0'
+    compile 'com.jakewharton.rxbinding:rxbinding-design:0.4.0'
+    compile 'com.trello:rxlifecycle:0.8.0'
+    compile 'com.trello:rxlifecycle-components:0.8.0'
+    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.7.1@aar'
+    //================注解相关
+    compile 'com.jakewharton:butterknife:7.0.1'
+    //================图片
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    //================依赖注入
+    compile 'com.google.dagger:dagger:2.7'
+    annotationProcessor "com.google.dagger:dagger-compiler:2.7"
+    provided 'javax.annotation:jsr250-api:1.0'
+    //================EventBus
+    compile 'de.greenrobot:eventbus:2.4.0'
+
+
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ViewFlipper android:id="@+id/layout_load_controller_vf"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/t2_layout_load_content" />
+
+    <include layout="@layout/t2_layout_load_empty" />
+
+    <include layout="@layout/t2_layout_load_error" />
+
+
+</ViewFlipper>

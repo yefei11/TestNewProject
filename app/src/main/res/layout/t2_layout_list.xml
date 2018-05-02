@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.isoffice.tronker2.widget.LoadingLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@id/layout_loading"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/root_fram_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/gap_small"
+                android:background="@color/divider_dark"
+                android:visibility="gone"></FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/top_layout2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:visibility="gone"></FrameLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                >
+
+                <FrameLayout
+                    android:id="@+id/bottom_layout2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"/>
+
+                <android.support.v4.widget.SwipeRefreshLayout
+                    android:id="@id/refresh_srl"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#00000000">
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_weight="1"
+                        android:scrollbars="vertical"/>
+                </android.support.v4.widget.SwipeRefreshLayout>
+
+
+            </RelativeLayout>
+
+
+            <FrameLayout
+                android:id="@+id/bottom_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_home_help"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/view_16"
+                android:visibility="gone"
+                />
+
+            <ImageView
+                android:id="@+id/iv_home_call_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/view_16"
+                android:visibility="gone"
+                />
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/float_image"
+            android:layout_width="70dp"
+            android:layout_height="28dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="签到"
+            android:textSize="15sp"
+            android:visibility="gone"
+            />
+
+    </FrameLayout>
+</com.isoffice.tronker2.widget.LoadingLayout>

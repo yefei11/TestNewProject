@@ -1,0 +1,57 @@
+package com.itheima.testnewproject.common.dagger.module;
+
+
+import com.blankj.utilcode.utils.NetworkUtils;
+import com.itheima.testnewproject.network.exception.NoNetworkException;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+import dagger.Module;
+import retrofit2.Retrofit;
+import rx.Observable;
+
+/**
+ * 描述说明  <br/>
+ * Author : zhongw <br/>
+ * CreateDate : 2017/1/6 17:01 <br/>
+ * Version 1.0
+ */
+@Module
+public class ServiceModule {
+
+  /*  @NetworkScope
+    @Provides
+    AgenyService provideAgenyService(Retrofit retrofit) {
+        return createService(retrofit, AgenyService.class);
+    }*/
+
+
+    private <SERVICE> SERVICE createService(Retrofit retrofit, final Class<SERVICE> service) {
+        final SERVICE originService = retrofit.create(service);
+
+        @SuppressWarnings("unchecked")
+        SERVICE proxyService =
+                (SERVICE) Proxy.newProxyInstance(service.getClassLoader(),
+                        new Class<?>[]{service},
+                        new InvocationHandler() {
+                            @SuppressWarnings("unchecked")
+                            @Override
+                            public Object invoke(Object proxy, Method method, Object... args)
+                                    throws Throwable {
+                                Object invokeResult = method.invoke(originService, args);
+                                if (invokeResult instanceof Observable) {
+                                    if (NetworkUtils.isConnected()) {
+                                        final Observable observable = (Observable) invokeResult;
+                                        return observable;
+                                    } else {
+                                        return Observable.error(new NoNetworkException());
+                                    }
+                                }
+                                return invokeResult;
+                            }
+                        });
+        return proxyService;
+    }
+}
