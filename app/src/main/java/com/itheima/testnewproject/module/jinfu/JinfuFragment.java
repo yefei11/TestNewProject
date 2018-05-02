@@ -1,8 +1,7 @@
 package com.itheima.testnewproject.module.jinfu;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.itheima.testnewproject.R;
-import com.itheima.testnewproject.common.fragment.BasePresenterListFragment;
+import com.itheima.testnewproject.common.fragment.BaseFragment;
 
 /**
  * 创建者     yf
@@ -14,11 +13,7 @@ import com.itheima.testnewproject.common.fragment.BasePresenterListFragment;
  * 更新描述   ${TODO}
  */
 
-public class JinfuFragment extends BasePresenterListFragment {
-    @Override
-    protected BaseQuickAdapter createAdapter() {
-        return null;
-    }
+public class JinfuFragment extends BaseFragment {
 
     @Override
     protected int getLayoutResId() {
