@@ -161,6 +161,9 @@ public abstract class BaseListFragment<T> extends RefreshableFragment {
         return new LinearLayoutManager(getActivity());
     }
 
+    /**
+     * 当加载数据为空或获取数据失败时，点击页面调用的方法
+     */
     @Override
     public void onReloadClick() {
         super.onReloadClick();

@@ -2,6 +2,8 @@ package com.itheima.testnewproject.common.dagger.module;
 
 
 import com.blankj.utilcode.utils.NetworkUtils;
+import com.itheima.testnewproject.common.dagger.scope.NetworkScope;
+import com.itheima.testnewproject.module.jinfu.service.FinancingService;
 import com.itheima.testnewproject.network.exception.NoNetworkException;
 
 import java.lang.reflect.InvocationHandler;
@@ -9,6 +11,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 import dagger.Module;
+import dagger.Provides;
 import retrofit2.Retrofit;
 import rx.Observable;
 
@@ -26,7 +29,11 @@ public class ServiceModule {
     AgenyService provideAgenyService(Retrofit retrofit) {
         return createService(retrofit, AgenyService.class);
     }*/
-
+  @NetworkScope
+  @Provides
+  FinancingService provideFinancingService(Retrofit retrofit) {
+      return createService(retrofit, FinancingService.class);
+  }
 
     private <SERVICE> SERVICE createService(Retrofit retrofit, final Class<SERVICE> service) {
         final SERVICE originService = retrofit.create(service);
