@@ -29,4 +29,12 @@
         <item name="android:textColor">@color/home_bottom_button</item>
         <item name="android:gravity">center</item>
     </style>
+    <style name="min_text_style_font_gray">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:drawablePadding">@dimen/gap_micro</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/font_gray</item>
+    </style>
 </resources>

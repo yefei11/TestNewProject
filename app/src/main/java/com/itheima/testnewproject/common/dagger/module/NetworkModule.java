@@ -7,6 +7,7 @@ import android.text.TextUtils;
 import com.google.gson.Gson;
 import com.itheima.testnewproject.BuildConfig;
 import com.itheima.testnewproject.common.dagger.scope.NetworkScope;
+import com.itheima.testnewproject.network.CookieHelper;
 import com.itheima.testnewproject.network.JsonUtil;
 import com.itheima.testnewproject.network.interceptor.MonitorHttpInterceptor;
 import com.itheima.testnewproject.network.interceptor.QueryParamsInterceptor;
@@ -15,6 +16,7 @@ import com.itheima.testnewproject.network.interceptor.ResultInterceptor;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -24,7 +26,9 @@ import javax.net.ssl.SSLSocketFactory;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.Cache;
+import okhttp3.Cookie;
 import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.OkHttpClient.Builder;
@@ -83,6 +87,69 @@ public class NetworkModule {
                         ? context.getExternalCacheDir() : context.getCacheDir();
 
         return new Cache(cacheDir, CACHE_MAX_SIZE);
+    }
+
+    @NetworkScope
+    @Provides
+    CookieJar provideCookieJar() {
+        //        return CookieUtil.newStoreCookieJar();
+        return new CookieJar() {
+            @Override
+            public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+
+            }
+
+            @Override
+            public List<Cookie> loadForRequest(HttpUrl url) {
+
+                //                PersistentCookieStore cookieStore = new PersistentCookieStore(AppContext.getInstance());
+                //
+                //                List<Cookie> cookies = new ArrayList<>(cookieStore.getCookies().size());
+                //
+                //                for (org.apache.http.cookie.Cookie cookie : cookieStore.getCookies()) {
+                //                    Cookie.Builder builder = new Cookie.Builder();
+                //                    builder
+                //                            .name(cookie.getName())
+                //                            .domain(cookie.getDomain())
+                //                            .value(cookie.getValue())
+                //                            .path(cookie.getPath());
+                //                    if (cookie.getExpiryDate() != null) {
+                //                        builder.expiresAt(cookie.getExpiryDate().getTime());
+                //                    }
+                //                    if (cookie.isSecure()) {
+                //                        builder.secure();
+                //                    }
+                //                    cookies.add(builder.build());
+                //                }
+
+                //                String cookieStr = CookieHelper.instance.getCookieStr();
+                //                return TextUtils.isEmpty(cookieStr) ?
+                //                        Collections.<Cookie>emptyList() :
+                //                        Collections.singletonList(Cookie.parse(url, cookieStr));
+
+                String cookieStr = CookieHelper.instance.getCookieStr();
+                if (TextUtils.isEmpty(cookieStr)){
+                    return Collections.<Cookie>emptyList();
+                }
+
+                String[] arrayStr = new String[]{};
+                arrayStr = cookieStr.split(";");
+                if (arrayStr.length == 1){
+                    return Collections.singletonList(Cookie.parse(url, cookieStr));
+                }
+                List<Cookie> cookies = null;
+                List<String> list = java.util.Arrays.asList(arrayStr);
+                for (int i = 0, size = list.size(); i < size; i++) {
+                    Cookie cookie = Cookie.parse(url, list.get(i));
+                    if (cookie == null)
+                        continue;
+                    if (cookies == null)
+                        cookies = new ArrayList<>();
+                    cookies.add(cookie);
+                }
+                return cookies==null?Collections.<Cookie>emptyList():cookies;
+            }
+        };
     }
 
     @NetworkScope

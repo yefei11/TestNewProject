@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
 
     compileSdkVersion versions.compileSdkVersion
@@ -74,6 +73,7 @@ android {
     dexOptions {
         javaMaxHeapSize "6g"
     }
+    useLibrary 'org.apache.http.legacy'//这个是使用这个包
 
 }
 
@@ -87,7 +87,19 @@ dependencies {
     compile 'com.blankj:utilcode:1.3.5'   //工具类
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.8.3' //recyclerview适配器
     compile 'com.yqritc:recyclerview-flexibledivider:1.4.0' //recyclerview分割线
+    compile 'com.anthonycr.grant:permissions:1.0' //申请权限
+    //单个权限申请  PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult申请单一权限
+    //申请清单所有权限 PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(this, new PermissionsResultAction() {
+    /* 最后都要执行回调：public void onRequestPermissionsResult(int requestCode,
+                                           @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        Log.i(TAG, "Activity-onRequestPermissionsResult() PermissionsManager.notifyPermissionsChange()");
+        PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+    }*/
+
     //================网络请求相关
+    compile 'org.apache.httpcomponents:httpcore:4.4.2'
+    compile 'com.loopj.android:android-async-http:1.4.5'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-gson:2.1.0'
     compile 'com.squareup.retrofit2:retrofit-mock:2.1.0'
