@@ -8,7 +8,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.itheima.testnewproject.common.BaseActivity;
-import com.itheima.testnewproject.module.home.HomeFragment;
+import com.itheima.testnewproject.module.home.view.HomeFragment;
 import com.itheima.testnewproject.module.investment.InvestmentFragment;
 import com.itheima.testnewproject.module.jinfu.view.JinfuFragment;
 import com.itheima.testnewproject.module.mine.MineFragment;

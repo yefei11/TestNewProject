@@ -9,6 +9,8 @@ import com.itheima.testnewproject.common.dagger.module.AppModule;
 import com.itheima.testnewproject.common.dagger.module.NetworkModule;
 import com.itheima.testnewproject.common.dagger.module.ServiceModule;
 import com.itheima.testnewproject.common.mvp.ItemsContract;
+import com.itheima.testnewproject.module.home.component.DaggerHomeIndexComponent;
+import com.itheima.testnewproject.module.home.component.HomeIndexComponent;
 import com.itheima.testnewproject.module.jinfu.component.DaggerFinanceHomeComponent;
 import com.itheima.testnewproject.module.jinfu.component.FinanceHomeComponent;
 import com.itheima.testnewproject.network.ServerAddress;
@@ -42,16 +44,16 @@ public class Injectors {
         return sModelComponent;
     }
 
-   /* public static LoginComponent loginComponent(LoginContract.View view) {
-        return DaggerLoginComponent.builder()
-                .modelComponent(sModelComponent)
-                .viewModule(new LoginComponent.ViewModule(view))
-                .build();
-    }*/
    public static FinanceHomeComponent financeHomeComponent(ItemsContract.View view) {
        return DaggerFinanceHomeComponent.builder()
                .modelComponent(sModelComponent)
                .viewModule(new FinanceHomeComponent.ViewModule(view))
                .build();
    }
+    public static HomeIndexComponent homeIndexComponent(ItemsContract.View view) {
+        return DaggerHomeIndexComponent.builder()
+                .modelComponent(sModelComponent)
+                .viewModule(new HomeIndexComponent.ViewModule(view))
+                .build();
+    }
 }

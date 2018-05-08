@@ -3,6 +3,7 @@ package com.itheima.testnewproject.common.dagger.module;
 
 import com.blankj.utilcode.utils.NetworkUtils;
 import com.itheima.testnewproject.common.dagger.scope.NetworkScope;
+import com.itheima.testnewproject.module.home.service.IndexService;
 import com.itheima.testnewproject.module.jinfu.service.FinancingService;
 import com.itheima.testnewproject.network.exception.NoNetworkException;
 
@@ -34,6 +35,12 @@ public class ServiceModule {
   FinancingService provideFinancingService(Retrofit retrofit) {
       return createService(retrofit, FinancingService.class);
   }
+
+    @NetworkScope
+    @Provides
+    IndexService provideIndexService(Retrofit retrofit) {
+        return createService(retrofit, IndexService.class);
+    }
 
     private <SERVICE> SERVICE createService(Retrofit retrofit, final Class<SERVICE> service) {
         final SERVICE originService = retrofit.create(service);

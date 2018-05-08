@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.blankj.utilcode.utils.ToastUtils;
 import com.itheima.testnewproject.R;
 
 import butterknife.Bind;
@@ -32,7 +31,7 @@ public class InvestmentFragment extends Fragment {
         View view = View.inflate(getActivity(),R.layout.fragment_home,null);
         //        View view = inflater.inflate(R.layout.fragment_home, container, false);
         ButterKnife.bind(this, view);
-        ToastUtils.showShortToast("这是怎么了");
+//        ToastUtils.showShortToast("这是怎么了");
         return view;
     }
 }

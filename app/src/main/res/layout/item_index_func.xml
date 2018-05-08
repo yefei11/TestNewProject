@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/white"
+              android:orientation="vertical"
+              android:padding="@dimen/spacing_normal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/index_func_production_tv"
+            style="@style/Home.Item.Func"
+            android:text="产学研"/>
+
+        <TextView
+            android:id="@+id/index_func_think_tank_tv"
+            style="@style/Home.Item.Func"
+            android:text="智库"/>
+
+        <TextView
+            android:id="@+id/index_func_fund_tv"
+            style="@style/Home.Item.Func"
+            android:text="投融"/>
+
+        <TextView
+            android:id="@+id/index_func_finance_tv"
+            style="@style/Home.Item.Func"
+            android:text="恒盈宝"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_normal">
+
+        <TextView
+            android:id="@+id/index_func_bank_tv"
+            style="@style/Home.Item.Func"
+            android:text="银行"/>
+
+        <TextView
+            android:id="@+id/index_func_gov_tv"
+            style="@style/Home.Item.Func"
+            android:text="政府"/>
+
+        <TextView
+            android:id="@+id/index_func_service_tv"
+            style="@style/Home.Item.Func"
+            android:text="服务"/>
+
+        <TextView
+            android:id="@+id/index_func_mall_tv"
+            style="@style/Home.Item.Func"
+            android:text="商城"/>
+    </LinearLayout>
+</LinearLayout>
