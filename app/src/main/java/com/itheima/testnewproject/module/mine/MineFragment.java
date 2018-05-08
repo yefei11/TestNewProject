@@ -1,5 +1,9 @@
 package com.itheima.testnewproject.module.mine;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+
 import com.itheima.testnewproject.R;
 import com.itheima.testnewproject.common.fragment.BaseFragment;
 
@@ -14,8 +18,15 @@ import com.itheima.testnewproject.common.fragment.BaseFragment;
  */
 
 public class MineFragment extends BaseFragment {
+
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_mine;
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+    }
+
 }

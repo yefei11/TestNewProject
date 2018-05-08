@@ -74,6 +74,7 @@ public abstract class BaseFragment extends RxFragment implements KeyEvent.Callba
 
         ButterKnife.bind(this, loadingLayout);
 
+
         return contentView;
     }
 
