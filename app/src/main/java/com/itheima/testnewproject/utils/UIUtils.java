@@ -163,10 +163,6 @@ public class UIUtils {
     }
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> branch
     /**
      * 显示虚拟键盘
      */
@@ -185,10 +181,6 @@ public class UIUtils {
 
         }
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> branch
     public static void hideInput(Activity activity, View view) {
         ((InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE))
                 .hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
