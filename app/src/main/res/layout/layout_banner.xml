@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:background="@color/white">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E8E8E8"
+        android:scaleType="centerInside"
+        android:src="@drawable/defaul_iamg_large"/>
+
+    <com.youth.banner.Banner
+        android:id="@+id/banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:delay_time="5000"
+        app:indicator_drawable_selected="@drawable/shape_index_white_line2"
+        app:indicator_drawable_unselected="@drawable/shape_index_white_line"
+        app:indicator_height="5px"
+        app:indicator_margin="4dp"
+        app:indicator_width="16dp"/>
+</FrameLayout>

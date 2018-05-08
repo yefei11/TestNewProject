@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:background="#f5f5f5"
+              android:gravity="center_horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="450dp">
+
+
+
+    <TextView
+        android:layout_marginTop="394dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#cccccc"
+        android:textSize="14sp"
+        android:text="找资金  找服务  找项目  找Tronker"
+        />
+
+    <ImageView
+        android:layout_marginTop="@dimen/view_10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/buld_gray"
+        />
+
+</LinearLayout>

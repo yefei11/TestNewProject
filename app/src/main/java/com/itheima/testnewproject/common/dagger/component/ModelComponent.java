@@ -4,6 +4,7 @@ package com.itheima.testnewproject.common.dagger.component;
 import com.itheima.testnewproject.common.dagger.module.NetworkModule;
 import com.itheima.testnewproject.common.dagger.module.ServiceModule;
 import com.itheima.testnewproject.common.dagger.scope.NetworkScope;
+import com.itheima.testnewproject.module.home.model.IndexModel;
 import com.itheima.testnewproject.module.jinfu.model.FinancingModel;
 
 import dagger.Component;
@@ -19,5 +20,7 @@ import dagger.Component;
 public interface ModelComponent {
 
     FinancingModel financingModel();
+
+    IndexModel indexModel();
 
 }
